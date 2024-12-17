@@ -14,10 +14,10 @@ void setup() {
 void loop() {
   int now_time = millis();                          
   sensorValue = analogRead(sensorPin);            
-  float voltage = sensorValue * (5.0 / 1023.0);     
+  float voltage = sensorValue * (5.0 / 1023.0);     //Конвертируем входной сигнал в вольты
                  
     if( now_time >= next_time ){               
-        next_time = now_time + timeout;
+        next_time = now_time + timeout; //Условие-счётчик, за выделенное время (timeout2) насчитывае количество высоких сигналов и затем сбрасывается
           if(voltage < 4){
     counter++;
   }       
