@@ -1,11 +1,23 @@
+#include <GyverEncoder.h> //Библиотека для гибкого управления энкодером
+#include <Servo.h> //Библиотека для работы с сервоприводами и бесколлекторными моторами
+#include <Shifty.h> //Библиотека для сдвиговых регистров - оптимизация кода
+
+#define clock 13 
+#define data 12 
+#define latch 10
+#define sensorPin A0 // Пин фоторезистора
+
 unsigned long next_time;
 unsigned long second_next_time; 
 int timeout = 5; // Частота обновления датчика оборотов
 int timeout2 = 1000; //Частота вычисления оборотов в секунду
-int sensorPin = A0;   // Пин, к которому подключен фоторезистор
 int sensorValue = 0;   // Переменная для хранения значения с фоторезистора
 int counter = 0; //Счётчик оборотов
 void setup() {
+  pinMode(clock, OUTPUT);
+  pinMode(data, OUTPUT);
+  pinMode(latch, OUTPUT);
+  digitalWrite(latch, HIGH); //Это надо заменить на подачу питания с шины 5 вольт по возможности
   Serial.begin(9600);   // Инициализация Serial для вывода данных.
   next_time = millis() + timeout;
   second_next_time = millis() + timeout2; // вычисляем время следующего переключения
