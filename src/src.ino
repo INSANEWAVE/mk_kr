@@ -64,12 +64,12 @@ void loop() {
    if( now_time >= next_time_2 ){               
         next_time_2 = now_time + timeout2;
           float RPM = (counter/timeout)*60;
-          Serial.println(counter);   
-          //Serial.println("RPM:");
-          //Serial.println(RPM);
+            
+          Serial.println("RPM:");
+          Serial.println(RPM);
 
-          //float val = map(RPM, 0, 50, 0, 180);
-          //myservo.write(val);                            
+          float val = map(RPM, 0, 200, 0, 180);
+          myservo.write(val);                            
           counter = 0;
          } 
    if( now_time >= next_time_3 ){               
