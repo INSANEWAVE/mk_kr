@@ -1,6 +1,6 @@
-#include <GyverEncoder.h> //Библиотека для гибкого управления энкодером
+//#include <GyverEncoder.h> //Библиотека для гибкого управления энкодером
 #include <Servo.h> //Библиотека для работы с сервоприводами и бесколлекторными моторами
-#include <Shifty.h> //Библиотека для сдвиговых регистров - оптимизация кода
+//#include <Shifty.h> //Библиотека для сдвиговых регистров - оптимизация кода
 
 #define clock 13 
 #define data 12 
@@ -9,7 +9,7 @@
 
 
 Servo myservo;
-Servo motor;
+//Servo motor;
 
 unsigned long next_time;
 unsigned long next_time_2;
@@ -22,7 +22,7 @@ bool elementDetected = false;
    
 long counter = 0;      //Счётчик оборотов
 void setup() {
-  motor.attach(9);  //Подключение мотора
+  //motor.attach(9);  //Подключение мотора
   myservo.attach(7);          //Подключение сервопривода
   myservo.write(180);
   delay(1000);
@@ -54,7 +54,7 @@ void loop() {
     if( now_time >= next_time ){               
       next_time = now_time + timeout;
       //Serial.println(sensorValue);  //Условие-счётчик, за выделенное время (timeout2) насчитывает количество высоких сигналов 
-      if(sensorValue < 952){
+      if(sensorValue < 940){
     elementDetected = true;              //и затем сбрасывается
     counter++;                         // НУЖНО ПЕРЕРАБОТАТЬ ВЕСЬ ТАЙМЕР - НЕТ СЧИТЫВАНИЯ НИЗКИХ ОБОРОТОВ. Теоретический вариант - измерять время между вспышками
   }else {elementDetected = false;}     
