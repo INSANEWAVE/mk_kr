@@ -62,7 +62,7 @@ void loop() {
           Serial.println("RPM:");
           Serial.println(RPM);
 
-          float val = map(RPM, 0, 200, 0, 180);
+          float val = map(RPM, 0, 2000, 0, 180);
           myservo.write(val);                            
           counter = 0;
          } 
